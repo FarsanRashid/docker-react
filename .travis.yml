@@ -1,0 +1,12 @@
+required: sudo
+
+services:
+  - docker
+
+before_install:
+  - docker build -t farsanrashid/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true farsanrashid/docker-react npm run test -- -- coverage
+    
+  
